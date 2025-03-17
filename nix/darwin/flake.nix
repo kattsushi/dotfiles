@@ -39,10 +39,26 @@
 	  "CleanMyMac" = 1339170533;
 	};
 	onActivation.cleanup = "zap";
+	onActivation.autoUpdate = true;
+	onActivation.upgrade = true;
       };
       fonts.packages = [
       	pkgs.nerd-fonts.jetbrains-mono
       ];
+
+      system.defaults = {
+	dock.autohide = true;
+	dock.persistent-apps = [
+	  "${pkgs.alacritty}/Applications/Alacritty.app"
+	  "/Applications/Zen Browser.app"
+	  "/Applications/Trae.app"
+	];
+	finder.FXPreferredViewStyle = "clmv";
+	loginwindow.GuestEnabled = false;
+	NSGlobalDomain.AppleICUForce24HourTime = true;	
+	NSGlobalDomain.AppleInterfaceStyle = "Dark";
+	NSGlobalDomain.KeyRepeat = 2;
+      };
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
