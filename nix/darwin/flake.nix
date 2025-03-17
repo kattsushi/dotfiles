@@ -26,6 +26,8 @@
 	  pkgs.fzf
 	  pkgs.zoxide
 	  pkgs.tmux
+    pkgs.bun
+    pkgs.fnm
         ];
 
       homebrew = {
