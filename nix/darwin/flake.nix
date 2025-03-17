@@ -22,6 +22,7 @@
 	  pkgs.mkalias
 	  pkgs.neovim
 	  pkgs.tmux
+	  pkgs.tree
         ];
 
       homebrew = {
