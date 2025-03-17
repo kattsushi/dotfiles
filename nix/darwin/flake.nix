@@ -23,6 +23,9 @@
 	  pkgs.neovim
 	  pkgs.tmux
 	  pkgs.tree
+	  pkgs.fzf
+	  pkgs.zoxide
+	  pkgs.tmux
         ];
 
       homebrew = {
