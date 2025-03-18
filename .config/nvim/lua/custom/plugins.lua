@@ -1,5 +1,13 @@
 local plugins = {
   {
+    "mhartington/formatter.nvim",
+    event = "VeryLazy",
+    config = function ()
+      require("custom.configs.formatter").setup()
+    end,
+    ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  },
+  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
