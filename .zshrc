@@ -17,9 +17,10 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light ohmyzsh/ohmyzsh
 
 # Add in snippets
-zinit snippet OMZ::git
+zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 # load completions
 autoload -U compinit && compinit 
@@ -50,7 +51,7 @@ alias c='clear'
 
 # Shell integrations
 
-eval "$(fzd --zsh)"
+eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # add powerlevel 10k
