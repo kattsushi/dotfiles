@@ -15,7 +15,8 @@ local plugins = {
         "biome",
         "eslint-lsp",
         "prettier",
-        "lua-language-server"
+        "lua-language-server",
+        "tailwindcss-language-server"
       }
     }
   },
@@ -26,5 +27,26 @@ local plugins = {
       require("custom.configs.lspconfig")
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+    config = function ()
+      require("nvim-ts-autotag").setup()
+    end
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function ()
+      opts = require("plugins.configs.treesitter")
+      opts.ensure_installed = {
+        "lua",
+        "typescript",
+        "javascript",
+        "tsx",
+        "css"
+      }
+      return opts
+    end
+  }
 }
 return plugins

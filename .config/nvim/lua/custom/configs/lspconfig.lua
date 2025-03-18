@@ -3,10 +3,11 @@ local on_attach = config.on_attach
 local capabilities = config.capabilities
 local lspconfig = require("lspconfig")
 
-lspconfig.biome.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {
+-- Lista de servidores LSP
+local servers = {
+  {
+    name = "biome",
+    filetypes = {
       'astro',
       'css',
       'graphql',
@@ -22,15 +23,33 @@ lspconfig.biome.setup {
     },
     root_dir = lspconfig.util.root_pattern('biome.json', 'biome.jsonc'),
     single_file_support = false,
-}
-
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    preferences = {
-      provideFormatter = false,
-      disableSuggestions = true,
+  },
+  {
+    name = "ts_ls",
+    init_options = {
+      preferences = {
+        provideFormatter = false,
+        disableSuggestions = true,
+      }
     }
+  },
+  {
+    name = "tailwindcss",
+  },
+  {
+    name = "cssls"
   }
 }
+
+-- Configuración común para todos los servidores
+local common_config = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- Configurar cada servidor LSP
+for _, server in ipairs(servers) do
+  local server_config = vim.tbl_deep_extend("force", common_config, server)
+  lspconfig[server.name].setup(server_config)
+end
+
