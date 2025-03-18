@@ -47,6 +47,30 @@ local plugins = {
       }
       return opts
     end
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      require("nvim-tree").setup({
+        filters = {
+          dotfiles = false, -- Muestra archivos ocultos que comienzan con "."
+          custom = {
+            "node_modules",
+            ".nx",
+            ".husky",
+            "build",
+            "dist",
+            "tempo-data",
+            ".react-router",
+            ".vinxi",
+            ".vscode",
+            ".git",
+            "package-lock.json",
+            "bun.lockb"
+          },
+        },
+      })
+    end
   }
 }
 return plugins
