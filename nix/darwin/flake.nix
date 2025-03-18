@@ -28,6 +28,7 @@
 	  pkgs.tmux
     pkgs.bun
     pkgs.fnm
+    pkgs.lazygit
         ];
 
       homebrew = {

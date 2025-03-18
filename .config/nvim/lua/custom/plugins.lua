@@ -37,7 +37,7 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function ()
-      opts = require("plugins.configs.treesitter")
+      local opts = require("plugins.configs.treesitter")
       opts.ensure_installed = {
         "lua",
         "typescript",
@@ -71,6 +71,21 @@ local plugins = {
         },
       })
     end
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    keys = {
+      { ";c", "<cmd>LazyGit<CR>", desc = "Abrir LazyGit" }, -- Mapeo correcto
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim" -- Dependencia opcional para ventanas flotantes
+    },
+    config = function()
+      -- Configuración adicional de lazygit.nvim (opcional)
+      require("lazygit").setup({
+        floating_window_scaling_factor = 0.9, -- Escala de la ventana flotante
+      })
+    end,
   }
 }
 return plugins
