@@ -41,6 +41,8 @@
 	  "zen-browser"
 	  "trae"
 	  "firefox"
+    "capcut"
+    "orbstack"
 	];
 	masApps = {
 	  "CleanMyMac" = 1339170533;

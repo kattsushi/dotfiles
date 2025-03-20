@@ -86,6 +86,48 @@ local plugins = {
         floating_window_scaling_factor = 0.9, -- Escala de la ventana flotante
       })
     end,
-  }
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add opts here
+    },
+    dependencies = {
+      -- if you lazy load any plugin bellowm make sure to add proper module entries
+      'MunifTanjim/nui.nvim',
+      -- Optional: 
+      --  ´nvim-notify´ is only needed, if you want to use the notification view.
+      --  If no available , we use mini as fallback
+      'rcarriga/nvim-notify'
+    }
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function ()
+      require("lualine").setup {
+        options = {
+          theme = "catppuccin", -- Use the catppuccin theme for lualine
+          section_separators = "", -- Optional ajust separators as needed
+          component_separators = "",
+          icons_enabled = true,
+          disabled_filetypes = { 'packer', 'NVimTree_1' },
+          -- you can further customize the sections _1from here
+          sections = {
+            lualine_a = {
+              'mode',
+            },
+            lualine_b = {
+              'branch', 'diff', 'diagnostics',
+            },
+            lualine_c = { 'filename' },
+            lualine_x = { 'filetype' },
+            lualine_y = { 'progress' },
+            lualine_z = { 'location' },
+          }
+        }
+      }
+    end
+  },
 }
 return plugins
