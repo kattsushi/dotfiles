@@ -19,7 +19,6 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
-	        pkgs.alacritty
           pkgs.mkalias
 	        pkgs.neovim
 	        pkgs.tmux
@@ -34,11 +33,11 @@
       homebrew = {
 	      enable = true;
 	      brews = [
- 	        "mas"
+          "mas"
 	        "stow"
 	      ];
 	      casks = [
-          "kitty"
+          "ghostty"
           "zen-browser"
 	        "trae"
 	        "firefox"
@@ -59,7 +58,7 @@
       system.defaults = {
 	      dock.autohide = true;
 	      dock.persistent-apps = [
-	        "${pkgs.alacritty}/Applications/Alacritty.app"
+	        "/Applications/Ghostty.app"
 	        "/Applications/Zen Browser.app"
 	        "/Applications/Trae.app"
 	      ];
