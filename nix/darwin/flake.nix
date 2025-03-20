@@ -6,7 +6,8 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    #nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.url = "git+https://github.com/zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew }:
@@ -18,55 +19,55 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
-	  pkgs.alacritty
-	  pkgs.mkalias
-	  pkgs.neovim
-	  pkgs.tmux
-	  pkgs.tree
-	  pkgs.fzf
-	  pkgs.zoxide
-	  pkgs.tmux
-    pkgs.bun
-    pkgs.fnm
-    pkgs.lazygit
+	        pkgs.alacritty
+          pkgs.mkalias
+	        pkgs.neovim
+	        pkgs.tmux
+	        pkgs.tree
+	        pkgs.fzf
+	        pkgs.zoxide
+          pkgs.bun
+          pkgs.fnm
+          pkgs.lazygit
         ];
 
       homebrew = {
-	enable = true;
-	brews = [
- 	  "mas"
-	  "stow"
-	];
-	casks = [
-	  "zen-browser"
-	  "trae"
-	  "firefox"
-    "capcut"
-    "orbstack"
-	];
-	masApps = {
-	  "CleanMyMac" = 1339170533;
-	};
-	onActivation.cleanup = "zap";
-	onActivation.autoUpdate = true;
-	onActivation.upgrade = true;
+	      enable = true;
+	      brews = [
+ 	        "mas"
+	        "stow"
+	      ];
+	      casks = [
+          "kitty"
+          "zen-browser"
+	        "trae"
+	        "firefox"
+          "capcut"
+          "orbstack"
+	      ];
+	      masApps = {
+	       "CleanMyMac" = 1339170533;
+	      };
+	      onActivation.cleanup = "zap";
+	      onActivation.autoUpdate = true;
+	      onActivation.upgrade = true;
+        onActivation.extraFlags = [ "--verbose" ];
       };
       fonts.packages = [
       	pkgs.nerd-fonts.jetbrains-mono
       ];
-
       system.defaults = {
-	dock.autohide = true;
-	dock.persistent-apps = [
-	  "${pkgs.alacritty}/Applications/Alacritty.app"
-	  "/Applications/Zen Browser.app"
-	  "/Applications/Trae.app"
-	];
-	finder.FXPreferredViewStyle = "clmv";
-	loginwindow.GuestEnabled = false;
-	NSGlobalDomain.AppleICUForce24HourTime = true;	
-	NSGlobalDomain.AppleInterfaceStyle = "Dark";
-	NSGlobalDomain.KeyRepeat = 2;
+	      dock.autohide = true;
+	      dock.persistent-apps = [
+	        "${pkgs.alacritty}/Applications/Alacritty.app"
+	        "/Applications/Zen Browser.app"
+	        "/Applications/Trae.app"
+	      ];
+	      finder.FXPreferredViewStyle = "clmv";
+	      loginwindow.GuestEnabled = false;
+	      NSGlobalDomain.AppleICUForce24HourTime = true;	
+	      NSGlobalDomain.AppleInterfaceStyle = "Dark";
+	      NSGlobalDomain.KeyRepeat = 2;
       };
 
       # Necessary for using flakes on this system.
@@ -92,20 +93,19 @@
     darwinConfigurations."air" = nix-darwin.lib.darwinSystem {
       modules = 
        [ 
-	 mac-app-util.darwinModules.default
-      	 configuration
-	 nix-homebrew.darwinModules.nix-homebrew 
-	  {
-   	    nix-homebrew = {
-	     enable = true;
-	     # Apple silicon only
-	     enableRosetta = true;
-	     # User owning the Homebrew prexix
-	     user = "andresjimenez";
-
-	     autoMigrate = true;
-	    };
-	  }
+	      mac-app-util.darwinModules.default
+      	configuration
+	      nix-homebrew.darwinModules.nix-homebrew 
+	      {
+   	        nix-homebrew = {
+	          enable = true;
+	          # Apple silicon only
+	          enableRosetta = true;
+	          # User owning the Homebrew prexix
+	          user = "andresjimenez";
+	          autoMigrate = true;
+	        };
+	      }
        ];
     };
     # Expose the package set including overlays, for convenience.
