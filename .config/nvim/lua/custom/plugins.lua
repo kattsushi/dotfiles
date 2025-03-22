@@ -111,7 +111,18 @@ local plugins = {
           section_separators = "", -- Optional ajust separators as needed
           component_separators = "",
           icons_enabled = true,
-          disabled_filetypes = { 'packer', 'NVimTree_1' },
+          ignore_focus = { "neo-tree", "NvimTree"},
+          globalstatus = false,
+          disabled_filetypes = {
+            statusline = {
+              "dashboard",
+              "aerial",
+              "dapui_.",
+              "neo-tree",
+              "NvimTree",
+            },
+            section_separators = { left = "", right = ""},
+           },
           -- you can further customize the sections _1from here
           sections = {
             lualine_a = {
@@ -127,7 +138,10 @@ local plugins = {
           }
         }
       }
-    end
+    require('nvim-tree.api').events.subscribe("TreeOpen", function ()
+     vim.wo.statusline = ' '
+    end)
+  end
   },
 }
 return plugins
