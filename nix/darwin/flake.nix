@@ -38,6 +38,7 @@
 	      ];
 	      casks = [
           "ghostty"
+          "raycast"
           "zen-browser"
 	        "trae"
 	        "firefox"

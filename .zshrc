@@ -81,3 +81,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
 
+
+# bun completions
+[ -s "/Users/andresjimenez/.bun/_bun" ] && source "/Users/andresjimenez/.bun/_bun"
