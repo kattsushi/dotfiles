@@ -84,3 +84,6 @@ export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
 
 # bun completions
 [ -s "/Users/andresjimenez/.bun/_bun" ] && source "/Users/andresjimenez/.bun/_bun"
+
+# Added by Windsurf
+export PATH="/Users/andresjimenez/.codeium/windsurf/bin:$PATH"
