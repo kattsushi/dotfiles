@@ -1,5 +1,9 @@
 local plugins = {
   {
+    'augmentcode/augment.vim',
+    lazy = false,
+  },
+  {
     "mhartington/formatter.nvim",
     event = "VeryLazy",
     config = function ()
