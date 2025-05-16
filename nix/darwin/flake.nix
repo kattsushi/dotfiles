@@ -6,8 +6,8 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    #nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    nix-homebrew.url = "git+https://github.com/zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    #nix-homebrew.url = "git+https://github.com/zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew }:
@@ -28,6 +28,9 @@
           pkgs.bun
           pkgs.fnm
           pkgs.lazygit
+          pkgs.oh-my-zsh
+          pkgs.vscode
+          pkgs.google-chrome
         ];
 
       homebrew = {
@@ -39,11 +42,12 @@
 	      casks = [
           "ghostty"
           "raycast"
-          "zen-browser"
+          "zen"
 	        "trae"
 	        "firefox"
           "capcut"
           "orbstack"
+          "protonvpn"
 	      ];
 	      masApps = {
 	       "CleanMyMac" = 1339170533;
@@ -60,8 +64,9 @@
 	      dock.autohide = true;
 	      dock.persistent-apps = [
 	        "/Applications/Ghostty.app"
-	        "/Applications/Zen Browser.app"
+	        "/Applications/Zen.app"
 	        "/Applications/Trae.app"
+          "/Applications/Nix Apps/Visual Studio Code.app"
 	      ];
 	      finder.FXPreferredViewStyle = "clmv";
 	      loginwindow.GuestEnabled = false;

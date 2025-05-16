@@ -87,3 +87,11 @@ export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
 
 # Added by Windsurf
 export PATH="/Users/andresjimenez/.codeium/windsurf/bin:$PATH"
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/andresjimenez/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andresjimenez/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+
+
+

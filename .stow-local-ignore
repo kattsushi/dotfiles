@@ -9,3 +9,5 @@ nix
 keys
 systems
 .DS_Store
+.config/gcloud
+
