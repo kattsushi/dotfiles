@@ -48,6 +48,7 @@
           "capcut"
           "orbstack"
           "protonvpn"
+          "keycastr"
 	      ];
 	      masApps = {
 	       "CleanMyMac" = 1339170533;

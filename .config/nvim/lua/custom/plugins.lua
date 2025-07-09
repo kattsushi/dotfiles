@@ -79,7 +79,7 @@ local plugins = {
   {
     "kdheepak/lazygit.nvim",
     keys = {
-      { ";c", "<cmd>LazyGit<CR>", desc = "Abrir LazyGit" }, -- Mapeo correcto
+      { ".c", "<cmd>LazyGit<CR>", desc = "Abrir LazyGit" }, -- Mapeo correcto
     },
     dependencies = {
       "nvim-lua/plenary.nvim" -- Dependencia opcional para ventanas flotantes
